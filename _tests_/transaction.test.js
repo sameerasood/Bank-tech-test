@@ -43,4 +43,12 @@ describe("TRANSACTION class", () => {
     transaction.addCredit(mockCredit2);
     expect(transaction.getBalance()).toEqual(500);
   });
+
+  it("returns balance in negative when withdraw happens", () => {
+    const transaction = new Transaction();
+    const mockDebit = new Debit(100, "21/03/2023");
+    mockDebit.getDebit.mockImplementation(() => 100);
+    transaction.withdrawDebit(mockDebit);
+    expect(transaction.getBalance()).toEqual(-100);
+  });
 });
