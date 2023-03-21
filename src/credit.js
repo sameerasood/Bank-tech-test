@@ -1,7 +1,7 @@
 class Credit {
   constructor(amount, date = new Date()) {
     this.amount = amount;
-    this.date = date;
+    this.date = date.toLocaleDateString("en-GB");
   }
 
   getCredit() {
@@ -9,7 +9,7 @@ class Credit {
   }
 
   getDate() {
-    return this.date();
+    return this.date;
   }
 }
 
