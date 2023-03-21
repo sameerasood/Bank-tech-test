@@ -21,7 +21,7 @@ describe("Account class", () => {
 
     account.transactionEntry(mockTransaction);
 
-    expect(account.statement()).toEqual([mockTransaction]);
+    expect(account.printStatement()).toEqual([mockTransaction]);
   });
 
   it("returns the statement with multiple transactions", () => {
@@ -32,7 +32,23 @@ describe("Account class", () => {
     account.transactionEntry(mockTransaction1);
     account.transactionEntry(mockTransaction2);
 
-    expect(account.statement()).toEqual([mockTransaction1, mockTransaction2]);
+    expect(account.printStatement()).toEqual([
+      mockTransaction1,
+      mockTransaction2,
+    ]);
+  });
+
+  it("returns the list of credits", () => {
+    const mockCredit1 = new Credit((100, "21/03/2023"));
+    const mockCredit2 = new Credit((200, "25/03/2023"));
+    const account = new Account();
+
+    mockCredit1.getCredit.mockImplementation(() => 100);
+    mockCredit2.getCredit.mockImplementation(() => 200);
+    account.deposit(mockCredit1);
+    account.deposit(mockCredit2);
+
+    expect(account.depositStatement()).toEqual([100, 200]);
   });
 });
 
