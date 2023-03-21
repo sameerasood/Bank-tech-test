@@ -1,7 +1,7 @@
 class Debit {
   constructor(amount, date = new Date()) {
     this.amount = amount;
-    this.date = date;
+    this.date = date.toLocaleDateString("en-GB");
   }
 
   getDebit() {
@@ -9,7 +9,7 @@ class Debit {
   }
 
   getDate() {
-    return this.date();
+    return this.date;
   }
 }
 
