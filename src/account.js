@@ -7,8 +7,11 @@ class Account {
     this.entry = [];
   }
 
-  statement(transaction) {
+  transactionEntry(transaction) {
     this.entry.push(transaction);
+  }
+
+  statement() {
     return this.entry;
   }
 }

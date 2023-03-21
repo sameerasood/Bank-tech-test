@@ -19,9 +19,20 @@ describe("Account class", () => {
     const mockTransaction = new Transaction();
     const account = new Account();
 
-    const entry = account.statement(mockTransaction);
+    account.transactionEntry(mockTransaction);
 
-    expect(entry).toEqual([mockTransaction]);
+    expect(account.statement()).toEqual([mockTransaction]);
+  });
+
+  it("returns the statement with multiple transactions", () => {
+    const mockTransaction1 = new Transaction();
+    const mockTransaction2 = new Transaction();
+    const account = new Account();
+
+    account.transactionEntry(mockTransaction1);
+    account.transactionEntry(mockTransaction2);
+
+    expect(account.statement()).toEqual([mockTransaction1, mockTransaction2]);
   });
 });
 
