@@ -20,9 +20,16 @@ describe("TRANSACTION class", () => {
   it("returns balance with added credit", () => {
     const transaction = new Transaction();
     const mockCredit = new Credit(100, "21/03/2023");
-    mockCredit.getCredit.mockImplementation(() => 100);
-    mockCredit.getDate.mockImplementation(() => "21/03/2023");
+    mockCredit.getCredit.mockImplementation(() => 100); // mock implementation of getCredit function
     transaction.addCredit(mockCredit);
     expect(transaction.getBalance()).toEqual(100);
+  });
+
+  it("returns balance with added credit", () => {
+    const transaction = new Transaction();
+    const mockCredit = new Credit(100, "21/03/2023");
+    mockCredit.getDate.mockImplementation(() => "21/03/2023");
+    transaction.addCredit(mockCredit);
+    expect(transaction.transactionDate()).toEqual("21/03/2023");
   });
 });
