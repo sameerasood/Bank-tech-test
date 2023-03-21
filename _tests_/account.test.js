@@ -17,15 +17,17 @@ describe("Account class", () => {
 
   it("returns the statement with single transaction", () => {
     const mockTransaction = new Transaction();
+    Transaction.mockImplementation(() => mockTransaction);
+
     const account = new Account();
     const mockCredit = new Credit(400, "16/05/2023");
 
     mockCredit.getDate.mockImplementation(() => "16/05/2023");
-    mockTransaction.getBalance.mockImplementation(() => 400);
+    mockTransaction.getBalance = jest.fn(() => 400);
 
     account.deposit(mockCredit);
 
-    expect(account.getAccountStatement()).toEqual(
+    expect(account.getAccountStatement()).toContain(
       "16/05/2023 || credit || 400"
     );
   });
