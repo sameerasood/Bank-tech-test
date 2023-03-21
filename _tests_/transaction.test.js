@@ -25,7 +25,7 @@ describe("TRANSACTION class", () => {
     expect(transaction.getBalance()).toEqual(100);
   });
 
-  it("returns balance with added credit", () => {
+  it("returns date of credit transaction", () => {
     const transaction = new Transaction();
     const mockCredit = new Credit(100, "21/03/2023");
     mockCredit.getDate.mockImplementation(() => "21/03/2023");
@@ -50,5 +50,13 @@ describe("TRANSACTION class", () => {
     mockDebit.getDebit.mockImplementation(() => 100);
     transaction.withdrawDebit(mockDebit);
     expect(transaction.getBalance()).toEqual(-100);
+  });
+
+  it("returns returns date of debit transaction", () => {
+    const transaction = new Transaction();
+    const mockDebit = new Debit(100, "21/03/2023");
+    mockDebit.getDate.mockImplementation(() => "21/03/2023");
+    transaction.withdrawDebit(mockDebit);
+    expect(transaction.transactionDate()).toEqual("21/03/2023");
   });
 });
