@@ -32,4 +32,15 @@ describe("TRANSACTION class", () => {
     transaction.addCredit(mockCredit);
     expect(transaction.transactionDate()).toEqual("21/03/2023");
   });
+
+  it("returns balance with two credits added", () => {
+    const transaction = new Transaction();
+    const mockCredit1 = new Credit(100, "21/03/2023");
+    const mockCredit2 = new Credit(400, "16/05/2023");
+    mockCredit1.getCredit.mockImplementation(() => 100);
+    mockCredit2.getCredit.mockImplementation(() => 400);
+    transaction.addCredit(mockCredit1);
+    transaction.addCredit(mockCredit2);
+    expect(transaction.getBalance()).toEqual(500);
+  });
 });
