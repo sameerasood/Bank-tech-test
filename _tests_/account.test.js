@@ -18,41 +18,15 @@ describe("Account class", () => {
   it("returns the statement with single transaction", () => {
     const mockTransaction = new Transaction();
     const account = new Account();
+    const mockCredit = new Credit(400, "16/05/2023");
 
-    account.transactionEntry(mockTransaction);
+    mockCredit.getDate.mockImplementation(() => "16/05/2023");
+    mockTransaction.getBalance.mockImplementation(() => 400);
 
-    expect(account.printStatement()).toEqual([mockTransaction]);
-  });
+    account.deposit(mockCredit);
 
-  it("returns the statement with multiple transactions", () => {
-    const mockTransaction1 = new Transaction();
-    const mockTransaction2 = new Transaction();
-    const account = new Account();
-
-    account.transactionEntry(mockTransaction1);
-    account.transactionEntry(mockTransaction2);
-
-    expect(account.printStatement()).toEqual([
-      mockTransaction1,
-      mockTransaction2,
-    ]);
-  });
-
-  it("returns the list of credits", () => {
-    const mockCredit1 = new Credit((100, "21/03/2023"));
-    const mockCredit2 = new Credit((200, "25/03/2023"));
-    const account = new Account();
-
-    mockCredit1.getCredit.mockImplementation(() => 100);
-    mockCredit2.getCredit.mockImplementation(() => 200);
-    account.deposit(mockCredit1);
-    account.deposit(mockCredit2);
-
-    expect(account.depositStatement()).toEqual([100, 200]);
+    expect(account.getAccountStatement()).toEqual(
+      "16/05/2023 || credit || 400"
+    );
   });
 });
-
-// [
-//   { balance: 100, date: "2023-03-20" },
-//   { balance: 200, date: "2023-03-21" },
-// ];
