@@ -16,4 +16,13 @@ describe("TRANSACTION class", () => {
     const transaction = new Transaction();
     expect(transaction.getBalance()).toBe(0);
   });
+
+  it("returns balance with added credit", () => {
+    const transaction = new Transaction();
+    const mockCredit = new Credit(100, "21/03/2023");
+    mockCredit.getCredit.mockImplementation(() => 100);
+    mockCredit.getDate.mockImplementation(() => "21/03/2023");
+    transaction.addCredit(mockCredit);
+    expect(transaction.getBalance()).toEqual(100);
+  });
 });
