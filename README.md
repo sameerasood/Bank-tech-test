@@ -19,3 +19,46 @@ date || credit || debit || balance
 13/01/2023 || 2000.00 || || 3000.00
 10/01/2023 || 1000.00 || || 1000.00
 ```
+
+### Project Installation
+To install the Bank tech project, clone this repo, and in the terminal - 
+
+```
+$ cd Bank-tech-test
+$ npm install
+```
+### Project Execution
+To run this program in REPL, open the terminal
+
+```
+$ cd src
+$ node
+```
+In node --
+```
+$ const Account = require("./account")
+$ const Credit = require("./credit")
+$ const Debit = require("./debit")
+$ const Transaction = require("./transaction")
+
+$ const account = new Account();
+$ const transaction = new Transaction();
+
+$ account.deposit(new Credit(100));
+$ account.getAccountStatement();
+
+$ account.withdraw(new Debit(30));
+$ account.getAccountStatement();
+```
+### Project Approach 
+
+- Focus on test-driven development.
+- Follow the SRP (Single Responsibility Principle). Create 4 classes so that every class has only one responsibility or job to do, and it should do it well.
+- Thorough mock testing for improved test coverage.
+
+
+
+
+
+
+
