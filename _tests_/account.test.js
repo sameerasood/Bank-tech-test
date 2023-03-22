@@ -28,7 +28,7 @@ describe("Account class", () => {
     account.deposit(mockCredit);
 
     expect(account.getAccountStatement()).toContain(
-      "16/05/2023 || credit || 400"
+      "16/05/2023 || credit || 400.00"
     );
   });
 });
