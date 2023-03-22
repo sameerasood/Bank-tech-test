@@ -37,9 +37,24 @@ $ node
 In node --
 ```
 $ const Account = require("./account")
-$ const Credit = require("./")
-```
+$ const Credit = require("./credit")
+$ const Debit = require("./debit")
+$ const Transaction = require("./transaction")
 
+$ const account = new Account();
+$ const transaction = new Transaction();
+
+$ account.deposit(new Credit(100));
+$ account.getAccountStatement();
+
+$ account.withdraw(new Debit(30));
+$ account.getAccountStatement();
+```
+### Project Approach 
+
+- Focus on test-driven development.
+- Follow the SRP (Single Responsibility Principle). Create 4 classes so that every class has only one responsibility or job to do, and it should do it well.
+- Thorough mock testing for improved test coverage.
 
 
 
