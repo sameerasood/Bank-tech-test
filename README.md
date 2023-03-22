@@ -50,11 +50,19 @@ $ account.getAccountStatement();
 $ account.withdraw(new Debit(30));
 $ account.getAccountStatement();
 ```
+![nodeExecutionScreenshot](https://github.com/sameerasood/Bank-tech-test/blob/5fe1ff37bafc274504fa164842057efe37830bab/nodeExecution.png)
+
 ### Project Approach 
 
 - Focus on test-driven development.
 - Follow the SRP (Single Responsibility Principle). Create 4 classes so that every class has only one responsibility or job to do, and it should do it well.
 - Thorough mock testing for improved test coverage.
+
+
+### Sequence Diagram
+
+Please note that a lot of changes were made to the original sequence diagram while creating the code.
+![sequence-diagram](https://github.com/sameerasood/Bank-tech-test/blob/main/sequence-diagram.png)
 
 
 
